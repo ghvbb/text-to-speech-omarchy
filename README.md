@@ -1,114 +1,95 @@
-Universal Text-to-Speech System with Online and Offline Capabilities
+# Text-to-Speech GUI (Tkinter)
 
-## Project Overview
+This project is a fork of a **Text-to-Speech CLI application**, extended with a **graphical user interface (GUI)** built using **Tkinter**.
+It is designed to run on **Linux-based distributions**, with primary testing on **Arch Linux**.
 
-This library provides a unified interface for various text-to-speech synthesis systems, enabling seamless switching between online and offline engines based on requirements and internet connectivity.
+The application supports both **online** and **offline** text-to-speech modes.
 
-Key Features:
-- Online synthesis through Google TTS
-- Offline synthesis using espeak and Piper
-- Unified interface for all engines
-- Multi-language support
-- Multiple audio output formats
-- CLI and Python API
+## Features
 
-## Installation
+* GUI built with Tkinter
+* CLI support
+* Online and offline text-to-speech
+* MP3 audio output
+* Cross-distro Linux support
+
+## Online vs Offline Mode
+
+* **Online mode**: Audio is generated and played automatically.
+* **Offline mode**: Audio is generated but **not played automatically**.
+  You must save the audio file first and then play it manually.
+
+## Dependencies
+
+### Python Packages
+
+Install the required Python libraries:
 
 ```bash
-# System dependencies (Linux)
-sudo apt install espeak espeak-data libespeak1 python3-pip
-# Python dependencies
-pip install -r requirements.txt
+pip install gTTS pyttsx3 --break-system-packages
 ```
+
+### System Packages
+
+#### Arch Linux
+
+```bash
+sudo pacman -S espeak-ng
+```
+
+#### Debian / Ubuntu
+
+```bash
+sudo apt update
+sudo apt install espeak ffmpeg python3-tk python3 tk
+```
+
+#### Fedora
+
+```bash
+sudo dnf install espeak-ng ffmpeg tk python3
+```
+
+> `espeak` / `espeak-ng` is required for offline text-to-speech.
+> `python3-tk` / `python3-tkinter` is required for the GUI.
 
 ## Usage
 
-### Basic examples
+### CLI (Terminal / TTY)
 
 ```bash
-# Google TTS (online)
-python cli.py "Hello world"
-# espeak (offline)
-python cli.py "Hello world" --engine pyttsx3
-# Another languages
-python cli.py "Hola amigo!" --language es
-# Save with automatic name
-python cli.py "Hello world" --file
-# Save to specific file
-python cli.py "Hello world" --file output.mp3
-# Google TTS (best quality)
-python cli.py "Hello world" --engine gtts
-# espeak (fast, offline)
-python cli.py "Hello world" --engine pyttsx3
-# Piper (high-quality offline)
-python cli.py "Hello world" --engine pipertts
-# Read from file
-python cli.py -i input.txt
-python cli.py -i input.txt --file output.mp3
-# BytesIO
-python cli.py "Hello world" --stdout | python3 play.py
-# Multiple outputs
-python cli.py "Hello world" --output play,file 
+python main.py "Your text here" --file name.mp3
 ```
 
-### Python API
+This command converts the text to speech and saves it as an MP3 file.
 
-```python
-from libs.api import text_to_speech_file, text_to_speech_bytes
+### GUI
 
-# Save to file
-filename = text_to_speech_file("Hello world!", engine="gtts")
-print(f"File created: {filename}")
-
-# Get as bytes (for web apps)
-audio_bytes = text_to_speech_bytes("Hello world!", engine="gtts")
-```
-
-## Project structure
-
-```
-text-to-speech/
-├── engines/
-│   ├── gtts.py
-│   ├── pyttsx3.py
-│   ├── silerotts.py
-│   ├── coquitts.py
-│   └── piper.py
-├── libs/
-│   ├── api.py
-│   ├── tools.py
-│   ├── playback.py
-│   └── exceptions.py
-├── bin/
-│   ├── install_pipertts.sh
-│   ├── install_coquitts.sh
-│   └── install_silerotts.sh
-├── docs/
-│   ├── COQUITTS.md
-│   ├── ENGINES.md
-│   ├── PIPERTTS.md
-│   └── SILEROTTS.md
-├── cli.py
-├── test_tts.py
-├── play.py
-└── requirements.txt
-
-```
-
-### Installing dependencies
-
-Install runtime (user) dependencies:
+Run the installation script:
 
 ```bash
-pip install -r requirements.txt
+chmod +x install.sh
 ```
-
-Install developer tools (linters, type checkers, test tools):
 
 ```bash
-pip install -r requirements-dev.txt
+./install.sh
 ```
 
-## License
+The script installs the application automatically and sets it up for GUI usage.
 
-MIT License
+## Compatibility
+
+* Arch Linux
+* Debian / Ubuntu
+* Fedora
+* Other Linux-based distributions may work
+
+## Credits
+
+Made by great contributors:
+
+* **ghvbb**
+* **wachawo**
+
+---
+* includes Tkinter packa
