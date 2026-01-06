@@ -1,4 +1,4 @@
-# Text-to-Speech GUI (Tkinter)
+# Text-to-Speech GUI (Tkinter) v2.0
 
 This project is a fork of a **Text-to-Speech CLI application**, extended with a **graphical user interface (GUI)** built using **Tkinter**.
 It is designed to run on **Linux-based distributions**, with primary testing on **Arch Linux**.
