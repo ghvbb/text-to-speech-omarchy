@@ -35,7 +35,7 @@ pip install gTTS pyttsx3 --break-system-packages
 #### Arch Linux
 
 ```bash
-sudo pacman -S espeak-ng
+sudo pacman -S espeak-ng tk
 ```
 
 #### Debian / Ubuntu
